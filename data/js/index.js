@@ -15,6 +15,7 @@ for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     var content = this.nextElementSibling;
     if(element.classList.contains('show')){
+      this.classList.toggle("active");
       if (content.style.maxHeight){
         content.style.maxHeight = null;
       } else {
