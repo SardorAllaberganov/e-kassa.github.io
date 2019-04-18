@@ -18,7 +18,10 @@ for (i = 0; i < coll.length; i++) {
       this.classList.toggle("active");
       if (content.style.maxHeight){
         content.style.maxHeight = null;
+        this.style.backgroundColor = "";
       } else {
+        this.style.backgroundColor = "#00701A";
+        content.style.maxHeight = null;
         content.style.maxHeight = content.scrollHeight + "px";
       } 
     }
@@ -27,6 +30,24 @@ for (i = 0; i < coll.length; i++) {
       }
     }
   });
+}
+
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show1");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show1')) {
+        openDropdown.classList.remove('show1');
+      }
+    }
+  }
 }
 
 // if(!element.classList.contains('show')){

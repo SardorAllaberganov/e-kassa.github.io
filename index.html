@@ -13,31 +13,65 @@
   <div class="sidebar" id="sidebar">
     <ul class="side-menu">
       <li>
-        <a class="buttons collapsible"><img src="data/img/line-graph.svg" alt="items"> <span> Reports </span></a>
+        <div class="buttons collapsible">
+          <img src="data/img/line-graph.svg" alt="items"> <span> Reports </span>
+        </div>
         <div class="content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <ul>
+            <li><a href="">Sales summary</a></li>
+            <li><a href="">Sales by item</a></li>
+            <li><a href="">Sales by category</a></li>
+            <li><a href="">Sales by employee</a></li>
+            <li><a href="">Sales by payment type</a></li>
+            <li><a href="">Receipts</a></li>
+            <li><a href="">Sales by modifier</a></li>
+            <li><a href="">Discounts</a></li>
+            <li><a href="">Taxes</a></li>
+          </ul>          
         </div>
       </li>
       <li>
-        <a class="buttons collapsible"><img src="data/img/shopping-bag.svg" alt="items"> <span> Items </span></a>
+        <div class="buttons collapsible">
+          <img src="data/img/shopping-bag.svg" alt="items"> <span> Items </span>
+        </div>
         <div class="content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <ul>
+            <li><a href="">Item list</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Modifiers</a></li>
+            <li><a href="">Discounts</a></li>
+          </ul>   
         </div>
       </li>
       <li>
-        <a class="buttons"><img src="data/img/inventory.svg" alt="items"><span> Inventory management </span></a>
+        <div class="buttons">
+          <a href="">
+            <img src="data/img/inventory.svg" alt="items"><span> Inventory management </span>
+          </a>
+        </div> 
       </li>
       <li>
-        <a class="buttons collapsible"><img src="data/img/id-card.svg" alt="items"> <span> Employees </span></a>
+        <div class="buttons collapsible">
+          <img src="data/img/id-card.svg" alt="items"> <span> Employees </span>
+        </div>
         <div class="content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <ul>
+            <li><a href="">Employee list</a></li>
+            <li><a href="">Access rights</a></li>
+          </ul> 
         </div>
       </li>
       <li>
-        <a class="buttons"><img src="data/img/group.svg" alt="items"><span> Customers </span></a>
+        <div class="buttons">
+          <a href="">
+            <img src="data/img/group.svg" alt="items"><span> Customers </span>
+          </a>
+        </div>
       </li>
       <li>
-        <a class="buttons"><img src="data/img/settings-gears.svg" alt="items"><span> Settings </span></a>
+        <div class="buttons">
+          <a href=""><img src="data/img/settings-gears.svg" alt="items"><span> Settings </span></a>
+        </div>
       </li>
     </ul>
   </div>
@@ -52,8 +86,11 @@
         </button>
       </div>
       <h2>E-Kassa</h2>
-      <div class="account">
-        <img src="data/img/user.svg" alt="user image">
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Sardor Allaberganov </button>
+        <div id="myDropdown" class="dropdown-content">
+          <button type="submit">Sign out</button>
+        </div>
       </div>
     </div>
   </div>
