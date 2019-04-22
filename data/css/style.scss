@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 
 *{
   box-sizing: border-box;
 }
 $main_color: #43A047;
 $secondary_color: #76D275;
+$active_color: #00701A;
 
 html,body{
-  font-family: 'Open Sans', sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -56,19 +57,7 @@ html,body{
       padding: 10px;
       background: none;
       border: none;
-      .img{
-        width: 50px;
-        height: 50px;
-        padding: 5px;
-      }
-      .title{
-        margin-left: 10px;
-        text-align: center;
-        color: #fff;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 20px;
-      }
+      
     }
   }
   &::-webkit-scrollbar,&::-webkit-scrollbar-track{
@@ -77,71 +66,91 @@ html,body{
   }
 }
 
-.buttons{
-  text-decoration: none;
+
+
+.accordion-container{
   position: relative;
-  background: none;
-  color: white;
-  cursor: pointer;
-  padding: 8px 0;
-  margin: 0;
-  background: none;
   width: 300px;
-  border: none;
+  height: auto;
+}
+.set{
+  position: relative;
+  width: 100%;
   text-align: left;
-  outline: none;
-  font-size: 15px;
-  a{
-    color: #fff;
+  height: auto;
+  img{
+    width: 50px;
+    padding: 10px;
   }
   span{
     width: 200px;
     position: absolute;
-    margin: 15px 20px 0 20px;
-    font-size: 16px;
-    font-weight: 600;
+    margin: 18px 20px 0 20px;
+    font-size: 14px;
+    font-weight: 500;
     letter-spacing: 0.5px;
   }
-}
+  a{
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    -webkit-transition:all 0.2s linear;
+    -moz-transition:all 0.2s linear;
+    transition:all 0.2s linear;
+    position: relative;
+    i{
+      position: absolute;
+      top: 45%;
+      right: 20px;
+      transform: translateY(-50%);
+    }
+    .sort-down1::after {
+      font-style: normal;
+      content: '\25B4';
+      color: white;
+      font-weight: bold;
+      float: right;
+      margin-left: 5px;
+    }
 
-.side-menu li:hover {
-  background-color: #00701A;
-}
-
-.collapsible::after {
-  margin: 15px;
-  content: '\25B4';
-  color: white;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
-
-.active::after {
-  content: "\25BE";
-}
-
-.content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #fff;
-  ul{
-    li{
-      padding: 5px;
-      a{
-        color: #333;
-        font-size: 14px;
-        text-decoration: none;
-        margin-left: 60px;
-      }
-      &:hover{
-        color: #00701A;
-        background: #ddd;
-      }
+    .sort-up1::after{
+      font-style: normal;
+      content: "\25BE";
+      color: #fff;
     }
   }
 }
+.active1{
+  background: $active_color;
+}
+.title-onHover{
+  position: absolute;
+  z-index: 9999;
+  display: none;
+  background: $main_color;
+  padding: 5px 10px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+.content{
+  background-color: #fff;
+  display:none;
+  a{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    color: $main_color;
+    padding: 8px 16px 8px 80px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    &:hover{
+      background: #ddd;
+    }
+  }
+}
+
 
 .main{
   width: 100%;
@@ -166,6 +175,12 @@ html,body{
         border: none;
         outline: none;
         cursor: pointer;
+        width: 50px;
+        height: 50px;
+        background: url(../img/menu-btn.svg);
+        background-size: 30px;
+        background-position: center;
+        background-repeat: no-repeat;
       }
     }
     top: 0;
@@ -178,10 +193,10 @@ html,body{
       margin: 0;
       position: absolute;
       left: 50%;
-      transform: translateX(-50%);
+      top: 50%;
+      transform: translate(-50%, -50%);
       color: #fff;
       font-weight: bold;
-
     }
   }
 }
@@ -189,11 +204,11 @@ html,body{
   color: white;
   font-size: 16px;
   border: none;
-  padding: 12px 0px 10px 40px;
+  padding: 13px 0px 10px 40px;
   cursor: pointer;
   outline: none;
   background: url(../img/user.svg);
-  background-size: 36px;
+  background-size: 35px;
   background-position: 0px 5px;
   background-repeat: no-repeat;
   &::after{
@@ -216,7 +231,7 @@ html,body{
   background-color: #ffffff;
   overflow: auto;
   float: left;
-  right: 5px;
+  right: 0px;
   top: 52px;
   width: 150px;
   box-shadow: 0px 0px 10px #bbb;
@@ -237,9 +252,7 @@ html,body{
   text-decoration: none;
   display: block;
 }
-
 .dropdown a:hover {background-color: #ddd;}
-
 .show1 {display: block;}
 
 // mixin media queries functions
@@ -262,6 +275,9 @@ html,body{
 
 
 @include mediaMaxWidthWithoutOrient(768px){
+  .sidebar{
+    width: 0;
+  }
   .dropbtn{
     text-indent: -9999em;
     padding: 10px 0;
