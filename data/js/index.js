@@ -8,31 +8,38 @@ var i;
 //   }
 // });
 
+$(document).ready(function(e) {
+  $('.categoryBtn').click(function() {
+      var pos = $(this).position();// distance from left of the document
+      console.log(pos);
+      $('.drpdwnElement').css({
+        'display': 'block',
+        top : pos.top + -15 + 'px',
+        left: pos.left + 0 + 'px'
+      });
+      console.log($(this).text());
+      if($(this).text() == $('.drpdwnElement').text()){
+        $('.drpdwnElement li').css('background', "#ddd");
+      } 
+  });
+  $('.drpdwnElement button').click(function() {
+    console.log($(this).text());
+  });
+});
 
 
 $(".set").hover(
   function() {
     var pos = $(this).position();
-
-    // console.log($(this).find('.content').text());
-
+    if (!element.classList.contains('show')) {
     $(".title-onHover").css({
-      position: "absolute",
       top: pos.top + 64 + "px",
       left: pos.left + 60 + "px"
     }).fadeIn();
+  }
     $(".title-onHover").text($(this).find('span').text());
-    // var htmlString = $(this).html();
-    // $(this).text( htmlString );
-    // if($(this).find())
-    // if($(".set").children().children().nodeName == "SPAN"){
-    //   console.log("true");
-    // }
   }, function() {
     $(".title-onHover").css("display", "none");
-    $(".title-onHover").innerHTML = $(this).text();
-    
-    // $( this ).find( "span:last" ).remove();
   }
 );
 // $('.set').click(function(){
@@ -97,4 +104,9 @@ window.onclick = function(event) {
       }
     }
   }
+  if (!event.target.matches('.categoryBtn')) {
+    $('.drpdwnElement').css({
+      'display': 'none'
+    })
+  };
 }

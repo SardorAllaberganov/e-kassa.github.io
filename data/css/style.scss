@@ -1,7 +1,10 @@
-
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 *{
   box-sizing: border-box;
+}
+a{
+  text-decoration: none!important;
 }
 $main_color: #43A047;
 $secondary_color: #76D275;
@@ -65,6 +68,23 @@ html,body{
     background: transparent;  /* Optional: just make scrollbar invisible */
   }
 }
+
+.indexMain{
+  transition: all .3s;
+  height: 100%;
+  width: calc(100% - 90px);
+  margin: 70px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ddd;
+  position: relative;
+}
+#myChart{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
 
 
 
@@ -158,46 +178,49 @@ html,body{
   height: 100%;
   overflow: auto;
   width: calc(100% - 50px);
-  float: left;
-  .topnav{
-    .menu-btn{
+  float: right;
+}
+.topnav{
+  z-index: 99999;
+  .menu-btn{
+    width: 50px;
+    height: 50px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    button{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
       width: 50px;
       height: 50px;
-      left: 0;
-      position: absolute;
-      top: 0;
-      button{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        background: none;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        width: 50px;
-        height: 50px;
-        background: url(../img/menu-btn.svg);
-        background-size: 30px;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
+      background: url(../img/menu-btn.svg);
+      background-size: 30px;
+      background-position: center;
+      background-repeat: no-repeat;
     }
-    top: 0;
-    padding: 6px;
-    position: fixed;
-    width: 100%;
-    height: 50px;
-    background: linear-gradient(to right, $main_color, $secondary_color);
-    h2{
-      margin: 0;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+  }
+  top: 0;
+  padding: 6px;
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(to right, $main_color, $secondary_color);
+  h2{
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    a{
       color: #fff;
-      font-weight: bold;
     }
+    font-weight: bold;
   }
 }
 .dropbtn {
@@ -255,6 +278,311 @@ html,body{
 .dropdown a:hover {background-color: #ddd;}
 .show1 {display: block;}
 
+
+.container{
+  box-shadow: 0 0 8px #bbb;
+  margin: 80px 40px;
+  padding: 20px;
+  border-radius: 3px;
+}
+.item-list{
+  position: relative;
+  .cols-2{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .top-btns, .top-drops{
+    list-style: none;
+    li{
+      display: inline;
+      margin: 5px;
+      button:not(.addItemBtn){
+        display: inline-block;
+        font-size: 14px;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #333333;
+        border: none;
+        border-radius: 3px;
+        background: none;
+        font-family: 'Roboto', sans-serif;
+      }
+      
+    }
+  }
+  .addItemBtn{
+    display: inline-block;
+    font-size: 14px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    background: $main_color;
+    font-family: 'Roboto', sans-serif;
+  }
+  .top-drops{
+    padding: 0;
+    margin: 0 60px 0 0;
+    li{
+      padding: 0 10px;
+      float: right;
+      span{
+        display: block;
+        font-size: 12px;
+        padding: 0 3px;
+        color: #999999;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 7px 0 2px;
+        font-family: 'roboto', sans-serif;
+      }
+      select{
+        min-width: 180px; 
+        border: none;
+        font-size: 14px;
+        padding: 5px 0;
+        outline: none;
+        border-bottom: 1px solid #999;
+      }
+    }
+  }
+  .search-btn{
+    position: absolute;
+    right: 5px;
+    background: none;
+    top: 25px;
+    outline: none;
+    cursor: pointer;
+    border: none!important;
+    img{
+      width: 20px;
+    }
+  }
+  hr{
+    border: 0.5px solid #ddd;
+    margin: 30px 0;
+  }
+  .search-Bar{
+    box-shadow: 0 0 8px #ddd;
+    border-radius: 5px;
+    height: 45px;
+    button,input{
+      float: left;
+      height: 45px;
+      border: none;
+      outline: none;
+    }
+    input{
+      margin: 0;
+      padding: 5px 10px;
+      font-size: 14px;
+      width: calc(100% - 90px);
+    }
+    button.search-icon, button.search-back{
+      width: 45px;
+      background-repeat: no-repeat!important;
+      background-size: 50% 50%!important;
+      background-position: center!important;
+    }
+    button.search-icon{
+      background: url(../img/search-solid.svg);
+    }
+    button.search-back{
+      border-right: 1px solid #ddd;
+      background: url(../img/arrow-left-solid.svg);
+    }
+  }
+  .item-list-table{
+    border-collapse: collapse;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    tr{
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      padding: 10px;
+      margin: 10px;
+      &:hover:not(.table-title){
+        background: #EEEEEE;
+      }
+    }
+    
+    .categoryBtn{
+      position: relative;
+      width: 100%;
+      text-transform: capitalize;
+      border: none;
+      outline: none;
+      background: none;
+      color: #333;
+      text-align: left;
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
+      font-size: 16px;
+      &:focus{
+        border-bottom: 2px solid $main_color;
+      }
+      &::after{
+        font-size: 8px;
+        position: absolute;
+        content: "\2b9f";
+        top: 45%;
+        right: 5px;
+        transform: translateY(-50%);
+      }
+    }
+    th,td{
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      border-collapse: collapse;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      padding: 10px;
+      font-weight: 400;
+    }
+    th{
+      cursor: pointer;
+      font-size: 13px;
+      color: #888;
+    }
+    td{
+      text-transform: capitalize;
+      color: #333;
+      font-size: 16px;
+    }
+    .table-number-header-width{
+      width: 120px;
+    }
+  }
+  .drpdwnElement{
+    .title{
+      color: #666;
+      background: #fff;
+      font-size: 14px;
+    }
+    z-index: 999;
+    display: none;
+    position: absolute;
+    background: #fff;
+    box-shadow: 0 0 5px #999;
+    ul{
+      padding: 0;
+      list-style: none;
+      margin: 0;
+      li{
+        width: 100%;
+        padding: 10px 20px;
+        button{
+          width: 100%;
+          border: none;
+          background: none;
+          outline: none;
+          color: #333333;
+          font-weight: 500;
+          text-align: left;
+          text-transform: capitalize;
+          padding: 8px 20px;
+        }
+      }
+    }
+  }
+  .pagination{
+    position: relative;
+    margin: 20px 0 0;
+    ul{
+      position: relative;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li{
+        display: inline;
+        position: relative;
+        button{
+          outline: none;
+          display: inline;
+          position: relative;
+          font-size: 30px;
+          background: none;
+          padding: 0px 25px;
+          border-collapse: collapse;
+          border: 1px solid #ddd;
+          color: #555;
+          &:first-child::after{
+            content: "\2039";
+            top: -2px;
+            position: relative;
+          }
+          &:last-child{
+            margin-left: -5px;
+          }
+          &:last-child::after{
+            content: "\203A";
+            position: relative;
+            top: -2px;
+          }
+        }
+        p{
+          top: -5px;
+          position: relative;
+          display: inline;
+          margin-left: 20px;
+          padding: 0 10px 10px;
+          color: #555;
+          font-size: 14px;
+          input{
+            width: 40px;
+            height: 30px;
+            margin: 2px 5px;
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+            background-color: #FCFCFC;
+            border: 1px solid #EAEAEA;
+            border-radius: 2px;
+          }
+        }
+        .rowPerPage{
+          color: #555;
+          position: relative;
+          top: -5px;
+          margin-left: 30px;
+          font-size: 14px;
+          select{
+            width: 70px;
+            border: none;
+            margin-left: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-bottom: 1px solid #bbb;
+          }
+        }
+      }
+    }
+  }
+}
+
+.import-items{
+  width: 100%;
+  transition: all .3s;
+  height: 100%;
+  overflow: auto;
+  width: calc(100% - 50px);
+  float: right;
+  h3{
+    font-weight: 400;
+    line-height: 26px;
+    font-size: 24px;
+    margin: 0;
+  }
+  p{
+    font-size: 14px;
+    a{
+      color: #337ab7
+    }
+  }
+}
+
+
 // mixin media queries functions
 @mixin mediaMaxWidthWithoutOrient($mediaMaxWidth) {
   @media only screen and (max-width: $mediaMaxWidth){
@@ -273,8 +601,22 @@ html,body{
   }
 }
 
-
+@include mediaMaxWidthWithoutOrient(1200px){
+  .item-list .cols-2{
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  }
+  .item-list .top-drops, ul{
+    margin: 20px 0 0;
+    padding: 0;
+  }
+  .item-list .top-drops li{
+    float: left;
+  }
+}
 @include mediaMaxWidthWithoutOrient(768px){
+  .item-list .cols-2{
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
   .sidebar{
     width: 0;
   }
@@ -283,5 +625,38 @@ html,body{
     padding: 10px 0;
     background-position: center 5px;
     width: 40px;
+  }
+  .main{
+    width: 100%;
+    .container{
+      margin: 50px 0;
+      ul{
+        padding: 0;
+        margin: 0;
+      }
+      .top-drops li{
+        float: none;  
+        select{
+          width: 100%;
+          option{
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mediaMaxWidth(768px, portrait){
+  .item-list .cols-2{
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    .addItem{
+      display: block;
+    }
+  }
+}
+@include mediaMaxWidth(576px, portrait){
+  .item-list .cols-2{
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }

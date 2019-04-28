@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myModule">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +9,20 @@
   <link rel="shortcut icon" href="data/img/logo.png">
   <link rel="stylesheet" href="data/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
 </head>
 <body>
+  <div class="title-onHover"></div>
   <div class="sidebar" id="sidebar">
     <div class="accordion-container">
       <div class="set">
         <a href="#">
-          <img src="data/img/line-graph.svg" alt="items"> <span class="tooltip"> Reports <span class="tooltiptext">Reports</span></span>
-          <span class="tooltiptext">Reports</span>
+          <img src="data/img/line-graph.svg" alt="items"> <span class="tooltip"> Reports </span>
           <i class="sort-down1"></i>
         </a>
         <div class="content">
           <ul>
-            <li><a href="">Sales summary</a></li>
+            <li><a href="index.html">Sales summary</a></li>
             <li><a href="">Sales by item</a></li>
             <li><a href="">Sales by category</a></li>
             <li><a href="">Sales by employee</a></li>
@@ -40,7 +41,7 @@
         </a>
         <div class="content">
           <ul>
-            <li><a href="">Item list</a></li>
+            <li><a href="pages/items/item-list.html">Item list</a></li>
             <li><a href="">Categories</a></li>
             <li><a href="">Modifiers</a></li>
             <li><a href="">Discounts</a></li>
@@ -78,21 +79,39 @@
 
   
   </div>
-  <div class="main">
-    <div class="topnav">
-      <div class="menu-btn">
-        <button type="button" id="menu">
-        </button>
-      </div>
-      <h2>E-Kassa</h2>
-      <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Sardor Allaberganov </button>
-        <div id="myDropdown" class="dropdown-content">
-          <button type="submit">Sign out</button>
-        </div>
+  <div class="topnav">
+    <div class="menu-btn">
+      <button type="button" id="menu">
+      </button>
+    </div>
+    <h2 class="main-title"><a href="index.html">E-Kassa</a></h2>
+    <div class="dropdown">
+      <button onclick="myFunction()" class="dropbtn">Sardor Allaberganov </button>
+      <div id="myDropdown" class="dropdown-content">
+        <button type="submit">Sign out</button>
       </div>
     </div>
   </div>
+  <div class="indexMain" ng-controller="myController">
+    <div id="myChart">Placeholder for chart</div>
+  </div>
+
+    <script>
+    	angular.module('myModule', [])
+    		.controller('myController', function ($scope) {
+				Highcharts.chart('myChart', {
+
+				    xAxis: {
+				        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+				            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+				    },
+
+				    series: [{
+				        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+				    }]
+				});
+    		});
+    </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="data/js/index.js"></script>

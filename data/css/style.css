@@ -1,6 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+a {
+  text-decoration: none !important;
 }
 
 html, body {
@@ -71,6 +76,26 @@ html, body {
   /* Remove scrollbar space */
   background: transparent;
   /* Optional: just make scrollbar invisible */
+}
+
+.indexMain {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  height: 100%;
+  width: calc(100% - 90px);
+  margin: 70px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 10px #ddd;
+          box-shadow: 0 0 10px #ddd;
+  position: relative;
+}
+
+#myChart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .accordion-container {
@@ -173,10 +198,11 @@ html, body {
   height: 100%;
   overflow: auto;
   width: calc(100% - 50px);
-  float: left;
+  float: right;
 }
 
-.main .topnav {
+.topnav {
+  z-index: 99999;
   top: 0;
   padding: 6px;
   position: fixed;
@@ -186,7 +212,7 @@ html, body {
   background: linear-gradient(to right, #43A047, #76D275);
 }
 
-.main .topnav .menu-btn {
+.topnav .menu-btn {
   width: 50px;
   height: 50px;
   left: 0;
@@ -194,7 +220,7 @@ html, body {
   top: 0;
 }
 
-.main .topnav .menu-btn button {
+.topnav .menu-btn button {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -212,15 +238,18 @@ html, body {
   background-repeat: no-repeat;
 }
 
-.main .topnav h2 {
+.topnav h2 {
   margin: 0;
   position: absolute;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  color: #fff;
   font-weight: bold;
+}
+
+.topnav h2 a {
+  color: #fff;
 }
 
 .dropbtn {
@@ -287,7 +316,381 @@ html, body {
   display: block;
 }
 
+.container {
+  -webkit-box-shadow: 0 0 8px #bbb;
+          box-shadow: 0 0 8px #bbb;
+  margin: 80px 40px;
+  padding: 20px;
+  border-radius: 3px;
+}
+
+.item-list {
+  position: relative;
+}
+
+.item-list .cols-2 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.item-list .top-btns, .item-list .top-drops {
+  list-style: none;
+}
+
+.item-list .top-btns li, .item-list .top-drops li {
+  display: inline;
+  margin: 5px;
+}
+
+.item-list .top-btns li button:not(.addItemBtn), .item-list .top-drops li button:not(.addItemBtn) {
+  display: inline-block;
+  font-size: 14px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #333333;
+  border: none;
+  border-radius: 3px;
+  background: none;
+  font-family: 'Roboto', sans-serif;
+}
+
+.item-list .addItemBtn {
+  display: inline-block;
+  font-size: 14px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  background: #43A047;
+  font-family: 'Roboto', sans-serif;
+}
+
+.item-list .top-drops {
+  padding: 0;
+  margin: 0 60px 0 0;
+}
+
+.item-list .top-drops li {
+  padding: 0 10px;
+  float: right;
+}
+
+.item-list .top-drops li span {
+  display: block;
+  font-size: 12px;
+  padding: 0 3px;
+  color: #999999;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 7px 0 2px;
+  font-family: 'roboto', sans-serif;
+}
+
+.item-list .top-drops li select {
+  min-width: 180px;
+  border: none;
+  font-size: 14px;
+  padding: 5px 0;
+  outline: none;
+  border-bottom: 1px solid #999;
+}
+
+.item-list .search-btn {
+  position: absolute;
+  right: 5px;
+  background: none;
+  top: 25px;
+  outline: none;
+  cursor: pointer;
+  border: none !important;
+}
+
+.item-list .search-btn img {
+  width: 20px;
+}
+
+.item-list hr {
+  border: 0.5px solid #ddd;
+  margin: 30px 0;
+}
+
+.item-list .search-Bar {
+  -webkit-box-shadow: 0 0 8px #ddd;
+          box-shadow: 0 0 8px #ddd;
+  border-radius: 5px;
+  height: 45px;
+}
+
+.item-list .search-Bar button, .item-list .search-Bar input {
+  float: left;
+  height: 45px;
+  border: none;
+  outline: none;
+}
+
+.item-list .search-Bar input {
+  margin: 0;
+  padding: 5px 10px;
+  font-size: 14px;
+  width: calc(100% - 90px);
+}
+
+.item-list .search-Bar button.search-icon, .item-list .search-Bar button.search-back {
+  width: 45px;
+  background-repeat: no-repeat !important;
+  background-size: 50% 50% !important;
+  background-position: center !important;
+}
+
+.item-list .search-Bar button.search-icon {
+  background: url(../img/search-solid.svg);
+}
+
+.item-list .search-Bar button.search-back {
+  border-right: 1px solid #ddd;
+  background: url(../img/arrow-left-solid.svg);
+}
+
+.item-list .item-list-table {
+  border-collapse: collapse;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+}
+
+.item-list .item-list-table tr {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 10px;
+  margin: 10px;
+}
+
+.item-list .item-list-table tr:hover:not(.table-title) {
+  background: #EEEEEE;
+}
+
+.item-list .item-list-table .categoryBtn {
+  position: relative;
+  width: 100%;
+  text-transform: capitalize;
+  border: none;
+  outline: none;
+  background: none;
+  color: #333;
+  text-align: left;
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  font-size: 16px;
+}
+
+.item-list .item-list-table .categoryBtn:focus {
+  border-bottom: 2px solid #43A047;
+}
+
+.item-list .item-list-table .categoryBtn::after {
+  font-size: 8px;
+  position: absolute;
+  content: "\2b9f";
+  top: 45%;
+  right: 5px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.item-list .item-list-table th, .item-list .item-list-table td {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  border-collapse: collapse;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  padding: 10px;
+  font-weight: 400;
+}
+
+.item-list .item-list-table th {
+  cursor: pointer;
+  font-size: 13px;
+  color: #888;
+}
+
+.item-list .item-list-table td {
+  text-transform: capitalize;
+  color: #333;
+  font-size: 16px;
+}
+
+.item-list .item-list-table .table-number-header-width {
+  width: 120px;
+}
+
+.item-list .drpdwnElement {
+  z-index: 999;
+  display: none;
+  position: absolute;
+  background: #fff;
+  -webkit-box-shadow: 0 0 5px #999;
+          box-shadow: 0 0 5px #999;
+}
+
+.item-list .drpdwnElement .title {
+  color: #666;
+  background: #fff;
+  font-size: 14px;
+}
+
+.item-list .drpdwnElement ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.item-list .drpdwnElement ul li {
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.item-list .drpdwnElement ul li button {
+  width: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  color: #333333;
+  font-weight: 500;
+  text-align: left;
+  text-transform: capitalize;
+  padding: 8px 20px;
+}
+
+.item-list .pagination {
+  position: relative;
+  margin: 20px 0 0;
+}
+
+.item-list .pagination ul {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item-list .pagination ul li {
+  display: inline;
+  position: relative;
+}
+
+.item-list .pagination ul li button {
+  outline: none;
+  display: inline;
+  position: relative;
+  font-size: 30px;
+  background: none;
+  padding: 0px 25px;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  color: #555;
+}
+
+.item-list .pagination ul li button:first-child::after {
+  content: "\2039";
+  top: -2px;
+  position: relative;
+}
+
+.item-list .pagination ul li button:last-child {
+  margin-left: -5px;
+}
+
+.item-list .pagination ul li button:last-child::after {
+  content: "\203A";
+  position: relative;
+  top: -2px;
+}
+
+.item-list .pagination ul li p {
+  top: -5px;
+  position: relative;
+  display: inline;
+  margin-left: 20px;
+  padding: 0 10px 10px;
+  color: #555;
+  font-size: 14px;
+}
+
+.item-list .pagination ul li p input {
+  width: 40px;
+  height: 30px;
+  margin: 2px 5px;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  background-color: #FCFCFC;
+  border: 1px solid #EAEAEA;
+  border-radius: 2px;
+}
+
+.item-list .pagination ul li .rowPerPage {
+  color: #555;
+  position: relative;
+  top: -5px;
+  margin-left: 30px;
+  font-size: 14px;
+}
+
+.item-list .pagination ul li .rowPerPage select {
+  width: 70px;
+  border: none;
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-bottom: 1px solid #bbb;
+}
+
+.import-items {
+  width: 100%;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  height: 100%;
+  overflow: auto;
+  width: calc(100% - 50px);
+  float: right;
+}
+
+.import-items h3 {
+  font-weight: 400;
+  line-height: 26px;
+  font-size: 24px;
+  margin: 0;
+}
+
+.import-items p {
+  font-size: 14px;
+}
+
+.import-items p a {
+  color: #337ab7;
+}
+
+@media only screen and (max-width: 1200px) {
+  .item-list .cols-2 {
+    -ms-grid-columns: (minmax(600px, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  }
+  .item-list .top-drops, ul {
+    margin: 20px 0 0;
+    padding: 0;
+  }
+  .item-list .top-drops li {
+    float: left;
+  }
+}
+
 @media only screen and (max-width: 768px) {
+  .item-list .cols-2 {
+    -ms-grid-columns: (minmax(400px, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
   .sidebar {
     width: 0;
   }
@@ -296,6 +699,42 @@ html, body {
     padding: 10px 0;
     background-position: center 5px;
     width: 40px;
+  }
+  .main {
+    width: 100%;
+  }
+  .main .container {
+    margin: 50px 0;
+  }
+  .main .container ul {
+    padding: 0;
+    margin: 0;
+  }
+  .main .container .top-drops li {
+    float: none;
+  }
+  .main .container .top-drops li select {
+    width: 100%;
+  }
+  .main .container .top-drops li select option {
+    text-transform: capitalize;
+  }
+}
+
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+  .item-list .cols-2 {
+    -ms-grid-columns: (minmax(450px, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  }
+  .item-list .cols-2 .addItem {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 576px) and (orientation: portrait) {
+  .item-list .cols-2 {
+    -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
 /*# sourceMappingURL=style.css.map */
