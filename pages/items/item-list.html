@@ -13,11 +13,50 @@
 </head>
 <body>
   <div class="title-onHover"></div>
+
+  <div class="onClickMenu Reports">
+      <div class="content1">
+        <ul>
+          <li><a href="/index.html">Sales summary</a></li>
+          <li><a href="">Sales by item</a></li>
+          <li><a href="">Sales by category</a></li>
+          <li><a href="">Sales by employee</a></li>
+          <li><a href="">Sales by payment type</a></li>
+          <li><a href="">Receipts</a></li>
+          <li><a href="">Sales by modifier</a></li>
+          <li><a href="">Discounts</a></li>
+          <li><a href="">Taxes</a></li>
+        </ul> 
+      </div>
+    </div>
+  
+    <div class="onClickMenu Items">
+      <div class="content1">
+        <ul>
+          <li><a href="item-list.html">Item list</a></li>
+          <li><a href="">Categories</a></li>
+          <li><a href="">Modifiers</a></li>
+          <li><a href="">Discounts</a></li>
+        </ul>   
+      </div>
+    </div>
+  
+    <div class="onClickMenu Employees">
+        <div class="content1">
+          <ul>
+            <li><a href="item-list.html">Item list</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="">Modifiers</a></li>
+            <li><a href="">Discounts</a></li>
+          </ul>   
+        </div>
+      </div>
+
   <div class="sidebar" id="sidebar">
     <div class="accordion-container">
       <div class="set">
         <a href="#">
-          <img src="../../data/img/line-graph.svg" alt="items"> <span class="tooltip"> Reports </span>
+          <img src="../../data/img/line-graph.svg" alt="items"> <span class="tooltip">Reports</span>
           <i class="sort-down1"></i>
         </a>
         <div class="content">
@@ -36,13 +75,13 @@
       </div>
       <div class="set">
         <a href="#">
-          <img src="../../data/img/shopping-bag.svg" alt="items"> <span> Items </span>
+          <img src="../../data/img/shopping-bag.svg" alt="items"> <span>Items</span>
           <i class="sort-down1"></i>
         </a>
         <div class="content">
           <ul>
             <li><a href="item-list.html">Item list</a></li>
-            <li><a href="">Categories</a></li>
+            <li><a href="categories.html">Categories</a></li>
             <li><a href="">Modifiers</a></li>
             <li><a href="">Discounts</a></li>
           </ul>   
@@ -103,8 +142,9 @@
             </button>
             <ul class="top-btns">
               <li class="addItem"><button class="addItemBtn">+ Add item</button></li>
-              <li><button onclick="window.location.href='import.html'">import</button></li>
-              <li><button>export</button></li>
+              <li ng-show="!myvalue"><button onclick="window.location.href='import.html'">import</button></li>
+              <li ng-show="!myvalue"><button>export</button></li>
+              <li ng-show="myvalue"><button>Delete</button></li>
             </ul>
             <ul class="top-drops">
               <li>
@@ -140,7 +180,7 @@
           <div style="overflow-x: auto">
             <table class="item-list-table">
               <tr class="table-title">
-                <th style="width: 40px"><input type="checkbox"  ng-click="toggleAll()" ng-model="isAllSelected"></th>
+                <th style="width: 40px"><input type="checkbox"  ng-click="toggleAll(); " ng-model="isAllSelected"></th>
                 <th ng-click="orderByClick('name')">Item name</th>
                 <th ng-click="orderByClick('category')" ng-model="category">Category</th>
                 <th ng-click="orderByClick('price')" class="table-number-header-width">Price</th>
@@ -149,7 +189,9 @@
                 <th ng-click="orderByClick('inStock')" class="table-number-header-width">In stock</th>
               </tr>
               <tr ng-repeat="item in items | orderBy : myOrderBy |filter: searchItem | filter : categoryItems" >
-                <td style="width: 40px"><input type="checkbox" ng-model="item.selected" ng-change="optionToggled()"></td>
+                <td style="width: 40px">
+                  <input type="checkbox" ng-model="item.selected" ng-change="optionToggled();">
+                </td>
                 <td>{{ item.name }}</td>
                 <td>
                   <button class="categoryBtn">{{item.category}}</button>

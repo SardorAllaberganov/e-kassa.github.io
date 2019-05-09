@@ -16,20 +16,28 @@ app.controller("itemController", ["$scope", function ($items) {
     $items.categoryItems = "";
   }
 
+  
+  $items.optionToggled = function(){
+    $items.isAllSelected = $items.items.every(
+      function(itm){ 
+        // $items.myvalue = !itm.selected;
+        return itm.selected; 
+      }
+    );
+  }
   $items.toggleAll = function() {
     var toggleStatus = !$items.isAllSelected;
-    angular.forEach($items.items, function(itm){ itm.selected = toggleStatus; });
-  
- }
- 
- $items.optionToggled = function(){
-   $items.isAllSelected = $items.items.every(function(itm){ return itm.selected; })
- }
+    angular.forEach($items.items, function(itm){ 
+      itm.selected = toggleStatus;
+      $items.myvalue = !$items.isAllSelected;
+    });
+  };
 
- $items.orderByClick = function(items) {
-  $items.myOrderBy = items;
-}
- 
+  $items.orderByClick = function(items) {
+    $items.myOrderBy = items;
+  }
+
+
 }]);
 
 app.filter('unique', function () {

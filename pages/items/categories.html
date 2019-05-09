@@ -1,67 +1,67 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myModule">
+<html lang="en" ng-app="eKassa">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>E-kassa</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:500,900,400italic,300,700,500italic,400&amp;subset=latin,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="data/img/logo.png">
-  <link rel="stylesheet" href="data/css/style.css">
+  <link rel="shortcut icon" href="../../data/img/logo.png">
+  <link rel="stylesheet" href="../../data/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
-  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="../../data/js/controllers.js"></script>
 </head>
-<body>
+<body ng-controller="itemController">
   <div class="title-onHover"></div>
 
   <div class="onClickMenu Reports">
-      <div class="content1">
-        <ul>
-          <li><a href="/index.html">Sales summary</a></li>
-          <li><a href="">Sales by item</a></li>
-          <li><a href="">Sales by category</a></li>
-          <li><a href="">Sales by employee</a></li>
-          <li><a href="">Sales by payment type</a></li>
-          <li><a href="">Receipts</a></li>
-          <li><a href="">Sales by modifier</a></li>
-          <li><a href="">Discounts</a></li>
-          <li><a href="">Taxes</a></li>
-        </ul> 
-      </div>
+    <div class="content1">
+      <ul>
+        <li><a href="../../index.html">Sales summary</a></li>
+        <li><a href="">Sales by item</a></li>
+        <li><a href="">Sales by category</a></li>
+        <li><a href="">Sales by employee</a></li>
+        <li><a href="">Sales by payment type</a></li>
+        <li><a href="">Receipts</a></li>
+        <li><a href="">Sales by modifier</a></li>
+        <li><a href="">Discounts</a></li>
+        <li><a href="">Taxes</a></li>
+      </ul> 
     </div>
-  
-    <div class="onClickMenu Items">
+  </div>
+
+  <div class="onClickMenu Items">
+    <div class="content1">
+      <ul>
+        <li><a href="item-list.html">Item list</a></li>
+        <li><a href="">Categories</a></li>
+        <li><a href="">Modifiers</a></li>
+        <li><a href="">Discounts</a></li>
+      </ul>   
+    </div>
+  </div>
+
+  <div class="onClickMenu Items">
       <div class="content1">
         <ul>
           <li><a href="item-list.html">Item list</a></li>
-          <li><a href="pages/items/categories.html">Categories</a></li>
+          <li><a href="categories.html">Categories</a></li>
           <li><a href="">Modifiers</a></li>
           <li><a href="">Discounts</a></li>
         </ul>   
       </div>
     </div>
-  
-    <div class="onClickMenu Items">
-        <div class="content1">
-          <ul>
-            <li><a href="item-list.html">Item list</a></li>
-            <li><a href="categories.html">Categories</a></li>
-            <li><a href="">Modifiers</a></li>
-            <li><a href="">Discounts</a></li>
-          </ul>   
-        </div>
-      </div>
 
   <div class="sidebar" id="sidebar">
     <div class="accordion-container">
       <div class="set">
         <a href="#">
-          <img src="data/img/line-graph.svg" alt="items"> <span class="tooltip"> Reports </span>
+          <img src="../../data/img/line-graph.svg" alt="items"> <span class="tooltip">Reports</span>
           <i class="sort-down1"></i>
         </a>
         <div class="content">
           <ul>
-            <li><a href="index.html">Sales summary</a></li>
+            <li><a href="../../index.html">Sales summary</a></li>
             <li><a href="">Sales by item</a></li>
             <li><a href="">Sales by category</a></li>
             <li><a href="">Sales by employee</a></li>
@@ -75,13 +75,13 @@
       </div>
       <div class="set">
         <a href="#">
-          <img src="data/img/shopping-bag.svg" alt="items"> <span> Items </span>
+          <img src="../../data/img/shopping-bag.svg" alt="items"> <span>Items</span>
           <i class="sort-down1"></i>
         </a>
         <div class="content">
           <ul>
-            <li><a href="pages/items/item-list.html">Item list</a></li>
-            <li><a href="pages/items/categories.html">Categories</a></li>
+            <li><a href="item-list.html">Item list</a></li>
+            <li><a href="categories.html">Categories</a></li>
             <li><a href="">Modifiers</a></li>
             <li><a href="">Discounts</a></li>
           </ul>   
@@ -89,12 +89,12 @@
       </div>
       <div class="set">
         <a href="">
-          <img src="data/img/inventory.svg" alt="items"><span> Inventory management </span>
+          <img src="../../data/img/inventory.svg" alt="items"><span>Inventory management</span>
         </a>
       </div>
       <div class="set">
         <a href="#">
-          <img src="data/img/id-card.svg" alt="items"> <span> Employees </span>
+          <img src="../../data/img/id-card.svg" alt="items"> <span>Employees</span>
           <i class="sort-down1"></i>
         </a>
         <div class="content">
@@ -106,12 +106,12 @@
       </div>
       <div class="set">
         <a href="#">
-          <img src="data/img/group.svg" alt="items"><span> Customers </span>
+          <img src="../../data/img/group.svg" alt="items"><span>Customers</span>
         </a>
       </div>
       <div class="set">
-        <a href="pages/settings.html">
-          <img src="data/img/settings-gears.svg" alt="items"><span> Settings </span>
+        <a href="../settings.html">
+          <img src="../../data/img/settings-gears.svg" alt="items"><span>Settings</span>
         </a>
       </div>
     </div>
@@ -123,7 +123,7 @@
       <button type="button" id="menu">
       </button>
     </div>
-    <h2 class="main-title"><a href="index.html">E-Kassa</a></h2>
+    <h2 class="main-title"><a href="../../index.html">E-Kassa</a></h2>
     <div class="dropdown">
       <button onclick="myFunction()" class="dropbtn">Sardor Allaberganov </button>
       <div id="myDropdown" class="dropdown-content">
@@ -131,28 +131,9 @@
       </div>
     </div>
   </div>
-  <div class="indexMain" ng-controller="myController">
-    <div id="myChart">Placeholder for chart</div>
-  </div>
 
-    <script>
-    	angular.module('myModule', [])
-    		.controller('myController', function ($scope) {
-				Highcharts.chart('myChart', {
-
-				    xAxis: {
-				        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
-				            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-				    },
-
-				    series: [{
-				        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-				    }]
-				});
-    		});
-    </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="data/js/index.js"></script>
+  <script src="../../data/js/index.js"></script>
 </body>
 </html>

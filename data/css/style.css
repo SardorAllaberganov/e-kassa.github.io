@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
+.fileinput-button p.infoText, #output {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -173,6 +181,118 @@ html, body {
   border-radius: 10px;
 }
 
+.onClickMenu {
+  position: absolute;
+  z-index: 99999;
+  display: none;
+}
+
+.fileinput-button {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 150px;
+}
+
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-plus:before {
+  content: "\2b";
+}
+
+.btn-success {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding: 1em 15em;
+  margin: 10px 0px 0px 0px;
+  color: #333;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  background: #EEEEEE;
+}
+
+.btn-success:hover {
+  border: 2px solid #ddd;
+  background: #ddd;
+}
+
+.fileinput-button p.infoText {
+  margin: 0;
+}
+
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px;
+  direction: ltr;
+  cursor: pointer;
+}
+
+#output {
+  z-index: 999;
+}
+
+.dragAndDrop[type='file'] {
+  border: 3px dashed #999;
+  padding: 140px 50px 10px 50px;
+  cursor: move;
+  width: 100%;
+  position: relative;
+}
+
+.dragAndDrop[type='file']:before {
+  content: "drag & drop your files here";
+  display: block;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 40px;
+  margin: -25px 0 0 -100px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #999;
+}
+
 .content {
   background-color: #fff;
   display: none;
@@ -189,6 +309,35 @@ html, body {
 
 .content a:hover {
   background: #ddd;
+}
+
+.content1 {
+  background: #fff;
+  display: block;
+  -webkit-box-shadow: 0 0 10px #999;
+          box-shadow: 0 0 10px #999;
+}
+
+.content1 ul {
+  padding: 0;
+  list-style: none;
+}
+
+.content1 ul li {
+  padding: 5px 10px;
+}
+
+.content1 ul li:hover {
+  background: #ddd;
+}
+
+.content1 a {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #43A047;
+  padding: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .main {
@@ -670,6 +819,30 @@ html, body {
 
 .import-items p a {
   color: #337ab7;
+}
+
+.import-buttons ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+}
+
+.import-buttons ul li {
+  display: inline;
+}
+
+.import-buttons ul li:not(.help-btn) {
+  float: right;
+  margin: 0 5px;
+}
+
+.import-buttons ul button {
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 @media only screen and (max-width: 1200px) {

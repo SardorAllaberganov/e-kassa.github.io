@@ -3,10 +3,70 @@ var coll = document.querySelectorAll(".collapsible");
 var content = document.querySelectorAll(".content");
 var i;
 
-// $(".set").on("hover", function(){
-//   if($(this).children().children().nodeName == "SPAN"){
+// $('.set').click(function() {
+//   var pos = $(this).position();// distance from left of the document
+//   console.log($(this).find('span').text());
+//   console.log($('.onClickMenu').find('.menuTitle').text());
+
+//   if($(this).find('span').text() == $('.onClickMenu').find('span').text()){
+//     console.log($(this).find('.content1').text());
+//     $('.onClickMenu').css({
+//       top : pos.top + 55 + 'px',
+//       left: pos.left + 55 + 'px'
+//     }).fadeIn(500);
 //   }
 // });
+
+// $(document).ready(function(e) {
+//   $('.set').click(function() {
+//     var pos = $(this).position();
+//     $('.onClickMenu').css({
+//         top : pos.top + 35 + 'px',
+//         left: pos.left + 55 + 'px'
+//     }).fadeIn(500);
+//   });
+// });
+
+
+
+
+$("input#ufile").change(function() {
+  $("#output").empty();
+  var ele = document.getElementById($(this).attr('id'));
+  var result = ele.files[0].name;
+  $(".infoText").hide();
+  $("#output").show();
+  $("#output").append(result);
+});
+
+$(document).ready(function() {
+  $('#cancelUpload').click( function(){
+    $(".infoText").show();
+    $('input#ufile').val('');
+    $("#output").hide();
+  });
+});
+
+
+
+$('.set').click(function(){
+  // console.log($('.onClickMenu').hasClass($(this).find('span').text()));
+  var pos = $(this).position();
+  if(element.classList.contains('show')){
+
+  }
+  else{
+    var itemClassName = $(this).find('span').text().trim();
+    if($('.onClickMenu').hasClass(itemClassName)){
+      console.log($(this).find('span').text());
+      $(".onClickMenu").fadeOut(500);
+      $('.' + itemClassName).css({
+          top : pos.top + 35 + 'px',
+          left: pos.left + 55 + 'px'
+      }).fadeIn(500);
+    }
+  }
+});
 
 $(document).ready(function(e) {
   $('.categoryBtn').click(function() {
@@ -24,6 +84,7 @@ $(document).ready(function(e) {
   });
   $('.drpdwnElement button').click(function() {
     console.log($(this).text());
+    
   });
 });
 
@@ -110,3 +171,11 @@ window.onclick = function(event) {
     })
   };
 }
+
+window.onload = function(){
+  document.onclick = function(e){
+     if(!e.target.matches(".set img")){
+      $(".onClickMenu").fadeOut(500);
+     }
+  };
+};
